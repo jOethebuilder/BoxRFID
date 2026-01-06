@@ -10,9 +10,6 @@
     "rebuild": "electron-rebuild -f -w nfc-pcsc",
     "build": "electron-builder",
     "build-win": "npm run rebuild && electron-builder --win",
-    "build-mac": "npm run rebuild && electron-builder --mac",
-    "build-linux": "npm run rebuild && electron-builder --linux",
-    "build-all": "npm run rebuild && electron-builder --win --linux --mac",
     "dist": "npm run build"
   },
   "build": {
