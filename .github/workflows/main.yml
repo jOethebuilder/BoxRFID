@@ -31,7 +31,9 @@ jobs:
       
     - name: Build Windows executable
       run: npm run build-win
-      
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
