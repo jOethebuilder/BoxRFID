@@ -6,10 +6,12 @@
   "scripts": {
     "start": "electron .",
     "dev": "NODE_ENV=development electron .",
+    "postinstall": "electron-builder install-app-deps",
+    "rebuild": "electron-rebuild -f -w nfc-pcsc",
     "build": "electron-builder",
-    "build-win": "electron-builder --win",
-    "build-linux": "electron-builder --linux",
-    "build-all": "electron-builder --win --linux",
+    "build-win": "npm run rebuild && electron-builder --win",
+    "build-linux": "npm run rebuild && electron-builder --linux",
+    "build-all": "npm run rebuild && electron-builder --win --linux",
     "dist": "npm run build"
   },
   "build": {
@@ -22,6 +24,11 @@
       "**/*"
     ],
     "asar": true,
+    "asarUnpack": [
+      "node_modules/nfc-pcsc/**/*"
+    ],
+    "npmRebuild": true,
+    "buildDependenciesFromSource": true,
     "win": {
       "target": [
         {
@@ -87,6 +94,7 @@
   "devDependencies": {
     "electron": "^37.3.1",
     "electron-builder": "latest",
+    "electron-rebuild": "^3.2.9",
     "png-to-ico": "^3.0.1",
     "sharp": "^0.34.3"
   },
