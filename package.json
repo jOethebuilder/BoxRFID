@@ -10,8 +10,6 @@
     "rebuild": "electron-rebuild -f -w nfc-pcsc",
     "build": "electron-builder",
     "build-win": "npm run rebuild && electron-builder --win",
-    "build-linux": "npm run rebuild && electron-builder --linux",
-    "build-all": "npm run rebuild && electron-builder --win --linux",
     "dist": "npm run build"
   },
   "build": {
@@ -47,6 +45,26 @@
         }
       ],
       "icon": "assets/icon.ico"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.png",
+      "category": "public.app-category.utilities"
     },
     "linux": {
       "target": [
